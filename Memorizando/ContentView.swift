@@ -9,9 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        VStack {
+            Text("Oi")
+                .makeCard()
+            
+            Text("🍎")
+                .makeCard()
+            
+            Text("🍐")
+                .makeCard()
+        }
+        .font(Font.system(size: 120))
+        .foregroundColor(Color.red)
     }
+
 }
 
 struct ContentView_Previews: PreviewProvider {
