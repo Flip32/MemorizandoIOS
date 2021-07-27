@@ -20,13 +20,15 @@ struct CardMaker: ViewModifier {
     func body(content: Content) -> some View {
         ZStack{
             RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(Color.pink)
+            RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(Color.white)
             RoundedRectangle(cornerRadius: lineWidth)
                 .stroke(lineWidth: 4)
             content
         }
         .padding()
-        .foregroundColor(Color.red)
+        .foregroundColor(Color.purple)
     }
 }
 
