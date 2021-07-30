@@ -9,37 +9,35 @@ import SwiftUI
 
 struct CardMaker: ViewModifier {
     
-    let cornerRadius: CGFloat
-    let lineWidth: CGFloat
+    var isFacedUp: Bool
     
-    init(cornerRadius: CGFloat = 12, lineWidth: CGFloat = 8) {
-        self.cornerRadius = cornerRadius
-        self.lineWidth = lineWidth
-    }
+    let cornerRadius: CGFloat = 12
+    let lineWidth: CGFloat = 12
+    
     
     func body(content: Content) -> some View {
         ZStack{
+            Group {
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(Color.white)
+                RoundedRectangle(cornerRadius: lineWidth)
+                    .stroke(lineWidth: 4)
+                content
+            }.opacity(isFacedUp ? 1 : 0)
+            
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(Color.pink)
-            RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.white)
-            RoundedRectangle(cornerRadius: lineWidth)
-                .stroke(lineWidth: 4)
-            content
+                .opacity(isFacedUp ? 0 : 1)
         }
-        .padding()
+        .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
         .foregroundColor(Color.purple)
     }
 }
 
 
 extension View {
-    func makeCard() -> some View {
-        self.modifier(CardMaker())
-    }
-    
-    func makeCard(withCornner cornerRadius: CGFloat, andLineWidth lineWidth: CGFloat) -> some View {
-        self.modifier(CardMaker(cornerRadius: cornerRadius, lineWidth: lineWidth))
+    func makeCard(isFacedUp: Bool = false) -> some View {
+        self.modifier(CardMaker(isFacedUp: isFacedUp))
     }
     
 }

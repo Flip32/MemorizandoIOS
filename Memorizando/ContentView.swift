@@ -8,39 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject
+    var viewModel: EmojiMemorizando
+    
     var body: some View {
         
-        HStack{
-            VStack {
-                RoundedRectangle(cornerRadius: 12)
-                    .makeCard()
-                    .animation(/*@START_MENU_TOKEN@*/.easeIn/*@END_MENU_TOKEN@*/)
-                
-                Text("🍎")
-                    .makeCard()
-                
-                Text("🍐")
-                    .makeCard()
-                
-                Text("🍊")
-                    .makeCard()
-            }
-            
-            VStack {
-                Text("🥑")
-                    .makeCard()
-                
-                Text("🍎")
-                    .makeCard()
-                
-                Text("🍐")
-                    .makeCard()
-                
-                Text("🍊")
-                    .makeCard()
+        VStack{
+            ForEach(viewModel.cards) {
+                card in
+                Text(card.content)
+                    .makeCard(isFacedUp: card.isFacedUp)
+                    .onTapGesture {
+                        viewModel.choose(card: card)
+                    }
             }
         }
-        .font(Font.system(size: 120))
+        .font(Font.system(size: 40))
         .foregroundColor(Color.red)
         .preferredColorScheme(.dark)
     }
@@ -49,8 +33,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            ContentView()
-        }
+        ContentView(viewModel: EmojiMemorizando())
     }
 }
