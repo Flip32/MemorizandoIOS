@@ -15,8 +15,13 @@ class EmojiMemorizando: ObservableObject {
     
     static func createMemoryGame() -> MemoryGame<String> {
         
-//        let emojis = ["🥑", "🍎", "🍊", "🍐", "🥝", "🍇", "🍉" ]
-        let emojis = ["🥑", "🍎", "🍊", ]
+        let emojisDB = ["🥑", "🍎", "🍊", "🍐", "🥝", "🍇", "🍉", "🍍", "🥥", "🫐", "🍒", "🍌" ]
+        let emojisDbShuffed = emojisDB.shuffled()
+        var emojis: [String] = []
+        let numberOfElements = Int.random(in: 1..<4)
+        for n in 0...numberOfElements {
+            emojis.append(emojisDbShuffed[n])
+        }
         
         return MemoryGame(numberOfPairs: emojis.count){
             emojis[$0]

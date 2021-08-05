@@ -24,7 +24,7 @@ struct ContentView: View {
                     }
             }
         }
-        .font(Font.system(size: 40))
+        .font(Font.system(size: CGFloat(10) / (CGFloat(viewModel.cards.count / 2) / 10) ) )
         .foregroundColor(Color.red)
         .preferredColorScheme(.dark)
     }

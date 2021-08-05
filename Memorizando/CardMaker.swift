@@ -29,7 +29,7 @@ struct CardMaker: ViewModifier {
                 .fill(Color.pink)
                 .opacity(isFacedUp ? 0 : 1)
         }
-        .padding(EdgeInsets(top: 0, leading: 4, bottom: 0, trailing: 4))
+        .padding(EdgeInsets(top: 10, leading: 4, bottom: 0, trailing: 4))
         .foregroundColor(Color.purple)
     }
 }
