@@ -13,11 +13,29 @@ import Foundation
 struct MemoryGame<CardContent> where CardContent: Equatable {
     
     var cards: [Card]
-    private var indexOfPreviousChosenCard: Int?
-    
-//    func creatCard(pairIndex) -> CardContent {
+    private var indexOfPreviousChosenCard: Int? {
+        get {
+            cards.indices.filter { cards[$0].isFacedUp }.only
+//            let filtered = cards.indices.filter { index in
+//                cards[index].isFacedUp
+//            }
+//            if filtered.count == 1 {
+//                return filtered.first
+//            } else {
+//                return nil
+//            }
+        }
         
-//    }
+        set {
+            for index in cards.indices {
+                cards[index].isFacedUp = index == newValue
+            }
+        }
+    }
+    
+    var gameOver: Bool {
+        cards.allSatisfy { $0.isMatched }
+    }
     
     init(numberOfPairs: Int, cardFactory: (Int) -> CardContent) {
         cards = [Card]()

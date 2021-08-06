@@ -34,9 +34,17 @@ class EmojiMemorizando: ObservableObject {
         model.cards
     }
     
+    var gameOver: Bool {
+        model.gameOver
+    }
+    
     // MARK: Processamento de Intenções
     func choose(card: MemoryGame<String>.Card) {
         model.choose(card: card)
+    }
+    
+    func newGame(){
+        model = EmojiMemorizando.createMemoryGame()
     }
     
 }

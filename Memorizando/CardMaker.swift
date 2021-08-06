@@ -14,6 +14,12 @@ struct CardMaker: ViewModifier {
     let cornerRadius: CGFloat = 12
     let lineWidth: CGFloat = 12
     
+    private var rotation: Double
+    
+    init(isFacedUp: Bool) {
+        self.isFacedUp = isFacedUp
+        rotation = isFacedUp ? 0 : 180
+    }
     
     func body(content: Content) -> some View {
         ZStack{
@@ -31,6 +37,7 @@ struct CardMaker: ViewModifier {
         }
         .padding(EdgeInsets(top: 10, leading: 4, bottom: 0, trailing: 4))
         .foregroundColor(Color.purple)
+        .rotation3DEffect(.degrees(rotation), axis: (0, 1, 0))
     }
 }
 
