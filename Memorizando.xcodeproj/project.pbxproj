@@ -13,6 +13,7 @@
 		835BAD4826B3773700C47B15 /* MemorizandoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BAD4726B3773700C47B15 /* MemorizandoGame.swift */; };
 		835BAD4A26B3805D00C47B15 /* Array+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BAD4926B3805D00C47B15 /* Array+Identifiable.swift */; };
 		835BAD4C26B3872600C47B15 /* EmojiMemorizando.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835BAD4B26B3872600C47B15 /* EmojiMemorizando.swift */; };
+		838E930A26CF2AA9006523DE /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838E930926CF2AA9006523DE /* Timer.swift */; };
 		83AFD8B726AA3E5F0022F268 /* MemorizandoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AFD8B626AA3E5F0022F268 /* MemorizandoApp.swift */; };
 		83AFD8B926AA3E5F0022F268 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AFD8B826AA3E5F0022F268 /* ContentView.swift */; };
 		83AFD8BB26AA3E5F0022F268 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83AFD8BA26AA3E5F0022F268 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		835BAD4726B3773700C47B15 /* MemorizandoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizandoGame.swift; sourceTree = "<group>"; };
 		835BAD4926B3805D00C47B15 /* Array+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Identifiable.swift"; sourceTree = "<group>"; };
 		835BAD4B26B3872600C47B15 /* EmojiMemorizando.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemorizando.swift; sourceTree = "<group>"; };
+		838E930926CF2AA9006523DE /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		83AFD8B326AA3E5F0022F268 /* Memorizando.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memorizando.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83AFD8B626AA3E5F0022F268 /* MemorizandoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemorizandoApp.swift; sourceTree = "<group>"; };
 		83AFD8B826AA3E5F0022F268 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				831DF0AD26BCB92400357C44 /* Array+OnlyOrNothing.swift */,
 				831DF0B126BCBB4E00357C44 /* Grid.swift */,
 				831DF0B326BCC0CD00357C44 /* GridLayout.swift */,
+				838E930926CF2AA9006523DE /* Timer.swift */,
 			);
 			path = Memorizando;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				835BAD4C26B3872600C47B15 /* EmojiMemorizando.swift in Sources */,
 				835BAD4A26B3805D00C47B15 /* Array+Identifiable.swift in Sources */,
 				83AFD8B926AA3E5F0022F268 /* ContentView.swift in Sources */,
+				838E930A26CF2AA9006523DE /* Timer.swift in Sources */,
 				831DF0B226BCBB4E00357C44 /* Grid.swift in Sources */,
 				83AFD8B726AA3E5F0022F268 /* MemorizandoApp.swift in Sources */,
 				83AFD8C626AA4D150022F268 /* CardMaker.swift in Sources */,

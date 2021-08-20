@@ -58,8 +58,6 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
                     cards[possibleMatch].isMatched = true
                 }
                 
-                
-                
             } else {
                 indexOfPreviousChosenCard = chosenCardIndex
             }
@@ -72,10 +70,59 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     
     struct Card: Identifiable {
         var id: Int
-        var isFacedUp: Bool = false
-        var isMatched: Bool = false
+        var isFacedUp: Bool = false {
+            didSet {
+                if isFacedUp {
+                    beginUsingBonusTime()
+                } else {
+                    stopUsingBonusTime()
+                }
+            }
+        }
+        var isMatched: Bool = false {
+            didSet {
+//                oldValue - valor antigo da variavel
+                stopUsingBonusTime()
+            }
+        }
         var content: CardContent
+        var bonusTime: TimeInterval = 10
         
+        var lastTimeFacingUp: Date?
+        var lastIntervalFacingUp: TimeInterval = 0
+        
+        private var timeFacingUp: TimeInterval {
+           
+            if let lastFlip = lastTimeFacingUp {
+                return lastIntervalFacingUp + Date().timeIntervalSince(lastFlip)
+            }
+            
+            return lastIntervalFacingUp
+        }
+        
+        var bonusTimeRemaining: TimeInterval {
+            max(0, bonusTime - timeFacingUp)
+        }
+        
+        var bonusRemaining: Double {
+            (bonusTime > 0 && bonusTimeRemaining > 0) ? bonusTimeRemaining / bonusTime : 0
+        }
+        
+        var isConsumingBonusTime: Bool {
+            isFacedUp && !isMatched && bonusTimeRemaining > 0
+        }
+        
+
+        private mutating func beginUsingBonusTime() {
+            if lastTimeFacingUp == nil {
+                lastTimeFacingUp = Date()
+            }
+        }
+        
+        private mutating func stopUsingBonusTime() {
+            lastIntervalFacingUp = timeFacingUp
+            lastTimeFacingUp = nil
+        }
     }
     
 }
