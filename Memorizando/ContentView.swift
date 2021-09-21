@@ -20,6 +20,10 @@ struct ContentView: View {
                 Text("Acabou o Jogo")
                     .font(.system(size: 40))
                 Spacer()
+                    .frame(height: 50)
+                Text("Sua pontuação foi de ")
+                    .font(.system(size: 30))
+                Spacer()
             } else {
                 Grid(viewModel.cards) {
                     card in

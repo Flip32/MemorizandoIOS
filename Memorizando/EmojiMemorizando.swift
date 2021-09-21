@@ -40,7 +40,11 @@ class EmojiMemorizando: ObservableObject {
     
     // MARK: Processamento de Intenções
     func choose(card: MemoryGame<String>.Card) {
-        model.choose(card: card)
+        if card.isFacedUp {
+            return
+        } else {
+            model.choose(card: card)
+        }
     }
     
     func newGame(){
