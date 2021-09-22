@@ -21,7 +21,7 @@ struct ContentView: View {
                     .font(.system(size: 40))
                 Spacer()
                     .frame(height: 50)
-                Text("Sua pontuação foi de ")
+                Text("Você conseguiu \(viewModel.totalScore) pontos")
                     .font(.system(size: 30))
                 Spacer()
             } else {

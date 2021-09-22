@@ -33,6 +33,18 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
     
+    var totalScore: Int {
+        var score: Double = 0
+        for card in cards {
+            print("Card \(card.content) com um bonusTimeRemaining de \(card.bonusRemaining)")
+            let newMaxIndividualScore = Double(100 / cards.count)
+            let scorePorcentage = card.bonusRemaining
+            score = score + (scorePorcentage * newMaxIndividualScore)
+        }
+        
+        return Int(ceil(score))
+    }
+    
     var gameOver: Bool {
         cards.allSatisfy { $0.isMatched }
     }

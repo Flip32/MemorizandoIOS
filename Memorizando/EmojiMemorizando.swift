@@ -34,6 +34,10 @@ class EmojiMemorizando: ObservableObject {
         model.cards
     }
     
+    var totalScore: Int {
+        model.totalScore
+    }
+    
     var gameOver: Bool {
         model.gameOver
     }
