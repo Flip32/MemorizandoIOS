@@ -12,6 +12,9 @@ struct ContentView: View {
     @ObservedObject
     var viewModel: EmojiMemorizando
     
+    @State
+    var isGameStarting = false
+    
     var body: some View {
         
         VStack{
@@ -40,13 +43,18 @@ struct ContentView: View {
             }
             Button("Novo Jogo") {
                 withAnimation(.easeInOut) {
-                    viewModel.newGame()
+//                    isGameStarting.toggle()
+                    // TODO - Consertar bug ao escolher o tipo na view GameStart
+                    viewModel.newGame(gameMode: "Animais")
                 }
             }
         }
 //        .font(Font.system(size: CGFloat(10) / (CGFloat(viewModel.cards.count / 2) / 10) ) )
         .foregroundColor(Color.red)
         .preferredColorScheme(.dark)
+        .sheet(isPresented: $isGameStarting){
+            GameStart(emojiViewModel : EmojiMemorizando())
+        }
     }
     
     
@@ -107,5 +115,44 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(viewModel: EmojiMemorizando())
+    }
+}
+
+struct GameStart: View {
+    
+    @ObservedObject
+    var emojiViewModel: EmojiMemorizando
+    
+    @Environment(\.presentationMode)
+    var presentationMode
+    
+//    var gameModeChosen: String?
+    
+    var body: some View{
+        VStack{
+            Text("Escolha o modo de jogo!")
+                .font(Font.title.weight(.bold))
+                .padding()
+            Button("Frutas 🍓 🍉"){
+//                self.gameModeChosen = "Frutas"
+                emojiViewModel.newGame(gameMode: "Frutas")
+                self.presentationMode.wrappedValue.dismiss()
+            }
+            .padding()
+            Button("Bolas ⚽️ 🏈") {
+//                self.gameModeChosen = "Bolas"
+                emojiViewModel.newGame(gameMode: "Bolas")
+                self.presentationMode.wrappedValue.dismiss()
+
+            }
+            .padding()
+            Button("Animais 🐶 🐍") {
+//                self.gameModeChosen = "Animais"
+                emojiViewModel.newGame(gameMode: "Animais")
+                self.presentationMode.wrappedValue.dismiss()
+
+            }
+            .padding()
+        }
     }
 }
